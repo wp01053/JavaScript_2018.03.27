@@ -1,35 +1,29 @@
-var myHeading = document.querySelector('h1');
-var id = localStorage.getItem('id');
-myHeading.innerHTML = id +'HomePage';
 
-function getIdPw(){
-    var iceCream = 'chocolate';
-    var id = prompt('ID 입력','');
-    alert(id +'가 로그인함.');
-    localStorage.setItem('id', id);
-    var passwordSystem = '12345'
-    var password = prompt('PW 입력','')
-    if (password ===passwordSystem)
-    alert('정상로그인!');
-    else alert('비밀번호 오류');
+function getIDPW(){
+var id =prompt('ID 입력','');
+var password = prompt(id + '가 사용할 초기 비번 입력','');
+localStorage.setItem('id',id);
+localStorage.setItem('password',password);
+}
+var password = localStorage.getItem('password');
+if(!password){
+getIDPW();
+}
+
+//Password?
+var passwordSystem = '12345'
+var password = prompt('PW 입력','')
+if (password ===passwordSystem){
+    alert('로그인 성공')
+    var id = localStorage.getItem('id');
+var heading= document.querySelector('h1');
+heading.innerHTML = id + 'HomePage';
     
 }
-getIdPw();
-
-document.querySelector('h1').onclick = function(){
-    getIdPw();
-}
-var myImg = document.querySelector('img');
-myImg.onclick =function(){
-    var src = myImg.getAttribute('src')
-    if(src === 'images/firefox-icon.png')
-    myImg.setAttribute('src', 'images/mokwon.png');
-    else
-    myImg.setAttribute('src', 'images/firefox-icon.png');    
-
-}
+else alert('로그인 실패')
+       
 var myButton = document.querySelector('button');
-var myHeading = document.querySelector('h1');
-myButton.onclick = function(){
-    getIdPw();
-}
+myButton.onclick = function (){  
+         getIDPW();  
+    }  
+   
